@@ -68,7 +68,7 @@ def project_path():
 
 @pytest.fixture
 def template_dir(project_path):
-    return project_path / "invoice_generator" / 'templates'
+    return project_path  / 'templates'
 
 
 @pytest.fixture
