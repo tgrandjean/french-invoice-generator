@@ -1,0 +1,118 @@
+\documentclass{invoice}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english,main=french]{babel}
+\usepackage{eurosym}
+\usepackage[scaled]{helvet}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{geometry}
+
+\geometry{a4paper, left=2cm, right=2cm, top=2cm, bottom=2cm}
+\renewcommand\familydefault{\sfdefault}
+\renewcommand{\headrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\rfoot{\thepage / \pageref{LastPage}}
+
+\begin{document}
+
+
+\BLOCK{ block head}
+  \begin{tabularx}{\textwidth}{l X l}
+  \hspace{-8pt}\multirow{3}{*}{
+    \begin{tabular}{l}
+      \LARGE{Facture} \vspace{12 pt} \\
+      Référence de facture: \VAR{invoice.reference} \\
+      \'Emise le \VAR{invoice.emited.strftime("%d/%m/%Y")} \\
+    \end{tabular}}
+  & \hskip12pt
+  & \hspace{-6pt}\multirow{3}{*}{
+    \BLOCK{if invoice.issuer.logo}\includegraphics[height=1.98cm]{\VAR{invoice.issuer.logo}}\BLOCK{endif}
+  }
+  \end{tabularx}\\
+\BLOCK{ endblock }
+
+\vspace{48 pt}
+
+\BLOCK{block commercial_parties}
+    \begin{tabularx}{\textwidth}{l X l}
+    \BLOCK{block issuer}
+        \hspace{-8pt}\multirow{6}{*}{
+          \begin{tabular}{l}
+            \color{gray}\MakeUppercase{Au nom et pour le compte de} \\
+            \noalign{\global\arrayrulewidth=1px}
+            \arrayrulecolor{lightgray}\hline \\[0.2ex]
+            \textbf{\VAR{invoice.issuer.company_name}} \\
+            \VAR{invoice.issuer.first_name} \VAR{invoice.issuer.last_name} \\
+            \VAR{invoice.issuer.address.address}, \\
+            \VAR{invoice.issuer.address.zip_code} \VAR{invoice.issuer.address.city} \\
+            SIRET:  \VAR{invoice.issuer.siret} \\
+            TVA intracom: \VAR{invoice.issuer.intracom_vat}
+          \end{tabular}}
+    \BLOCK{endblock}
+    &
+    &
+    \BLOCK{block customer}
+        \multirow{3}{*}{
+          \begin{tabular}{l}
+            \color{gray}\MakeUppercase{Adressé à}\\
+            \arrayrulecolor{lightgray}\hline \\[0.2ex]
+            \BLOCK{if invoice.customer.name}
+              \textbf{\VAR{invoice.customer.name}} \\[0.2ex]
+            \BLOCK{endif}
+            \BLOCK{if invoice.customer.first_name}
+              \VAR{invoice.customer.first_name} \VAR{invoice.customer.last_name} \\
+            \BLOCK{endif}
+            \BLOCK{if invoice.customer.address}
+              \VAR{invoice.customer.address.address},\\
+              \VAR{invoice.customer.address.zip_code} \VAR{invoice.customer.address.city | capitalize}\\[0.2ex]
+            \BLOCK{endif}
+            \BLOCK{if invoice.customer.email}\VAR{invoice.customer.email.replace('_', '\_')}\BLOCK{endif} \\
+            \BLOCK{if invoice.customer.phone}tel: \VAR{invoice.customer.phone}\BLOCK{endif} \\
+          \end{tabular}
+        }
+    \BLOCK{endblock}
+    \end{tabularx}
+\BLOCK{endblock}
+
+\vspace{100 pt}
+
+\hspace{8 pt}\color{gray}\MakeUppercase{Prestations}\\[-1.6ex]
+\arrayrulecolor{lightgray}\hline
+
+\color{black}
+
+\BLOCK{block table_of_fees}
+
+\BLOCK{endblock}
+
+\BLOCK{block payment}
+
+\BLOCK{endblock}
+
+\vspace{1 cm}
+\BLOCK{block legal_notices}
+\vspace*{\fill}
+  \begin{center}
+    \footnotesize{\VAR{invoice.issuer.company_name}, SIRET: \VAR{invoice.issuer.siret}}\\
+    \footnotesize{\VAR{invoice.issuer.ape_code}}\\
+    \footnotesize{Numéro de TVA Intracommunautaire: \VAR{invoice.issuer.intracom_vat}}\\
+    \footnotesize{
+      \BLOCK{if invoice.total_vat == 0}
+        TVA non applicable en vertu de l'article 293 B du CGI.
+      \BLOCK{endif}
+    }\\
+    \footnotesize{La facture est payable sous 30 jours.}\\
+    \footnotesize{Tout réglement effectué après expiration du délai donnera lieu, à titre de pénalité de retart, à l'application
+    d'un intérêt égal à celui pratiqué par la Banque Centrale Européene à son opération de refinancement la plus récente,
+    majoré de 10 points de pourcentage, ainsi qu'à une indemnité forfaitaire pour frais de recouvrement d'un montant de 40 Euros.}\\
+    \footnotesize{Les pénalités de retard sont exigibles sans qu'un rappel soit nécessaire.}
+  \end{center}
+\BLOCK{endblock}
+
+\end{document}

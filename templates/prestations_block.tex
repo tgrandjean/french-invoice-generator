@@ -1,0 +1,6 @@
+& & & &\\[0.25ex]
+\centering{\bf Détail} & \centering{\bf Quantité} & \centering{\bf Prix unit. (HT)} & \centering{\BLOCK{if invoice.total_by_vat.keys() | length > 1} \bf TVA \BLOCK{endif}} & \bf TOTAL (HT)\\[2.5ex]%\hline
+& & & &\\
+\BLOCK{for prestation in page}
+ \VAR{prestation.title} & \centering \VAR{prestation.quantity} & \centering \VAR{prestation.unit_price | round(2)} \euro{} & \centering\BLOCK{if invoice.total_by_vat.keys() | length > 1} \VAR{prestation.vat} \BLOCK{endif}&  \VAR{prestation.total | round(2)} \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+\BLOCK{endfor}

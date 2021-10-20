@@ -1,0 +1,158 @@
+\documentclass{invoice}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english,main=french]{babel}
+\usepackage{eurosym}
+\usepackage[scaled]{helvet}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{geometry}
+
+\geometry{a4paper, left=2cm, right=2cm, top=2cm, bottom=2cm}
+\renewcommand\familydefault{\sfdefault}
+\renewcommand{\headrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\rfoot{\thepage / \pageref{LastPage}}
+
+\begin{document}
+
+
+  \begin{tabularx}{\textwidth}{l X l}
+  \hspace{-8pt}\multirow{3}{*}{
+    \begin{tabular}{l}
+      \LARGE{Facture} \vspace{12 pt} \\
+      Référence de facture: 2021-001 \\
+      \'Emise le 20/10/2021 \\
+    \end{tabular}}
+  & \hskip12pt
+  & \hspace{-6pt}\multirow{3}{*}{
+      }
+  \end{tabularx}\\
+
+\vspace{48 pt}
+
+    \begin{tabularx}{\textwidth}{l X l}
+            \hspace{-8pt}\multirow{6}{*}{
+          \begin{tabular}{l}
+            \color{gray}\MakeUppercase{Au nom et pour le compte de} \\
+            \noalign{\global\arrayrulewidth=1px}
+            \arrayrulecolor{lightgray}\hline \\[0.2ex]
+            \textbf{My Awesome Company} \\
+            Pierre Qui roule \\
+            Champs de Mars, \\
+            75000 Paris \\
+            SIRET:  0000000000 \\
+            TVA intracom: FRXXXXXXXXX
+          \end{tabular}}
+        &
+    &
+            \multirow{3}{*}{
+          \begin{tabular}{l}
+            \color{gray}\MakeUppercase{Adressé à}\\
+            \arrayrulecolor{lightgray}\hline \\[0.2ex]
+                          \textbf{SARL Dupond et fils} \\[0.2ex]
+                                      Jean Dupond \\
+                                      17 Avenue des Champs-Elysées,\\
+              75000 Paris\\[0.2ex]
+                        jean.dupond@example.com \\
+            tel: +33 6 00 00 00 00 \\
+          \end{tabular}
+        }
+        \end{tabularx}
+
+\vspace{100 pt}
+
+\hspace{8 pt}\color{gray}\MakeUppercase{Prestations}\\[-1.6ex]
+\arrayrulecolor{lightgray}\hline
+
+\color{black}
+
+% Multiple page
+                        % Page that contains only prestations
+                  \begin{tabularx}{\linewidth}{c X X X c c}
+                      & & & &\\[0.25ex]
+\centering{\bf Détail} & \centering{\bf Quantité} & \centering{\bf Prix unit. (HT)} & \centering{ \bf TVA } & \bf TOTAL (HT)\\[2.5ex]%\hline
+& & & &\\
+ prestation 1 & \centering 1.0 & \centering 1.47 \euro{} & \centering 20.0 &  1.47 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 2 & \centering 5.0 & \centering 0.47 \euro{} & \centering 20.0 &  2.35 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 3 & \centering 7.0 & \centering 4.73 \euro{} & \centering 10.0 &  33.1 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 4 & \centering 9.0 & \centering 0.32 \euro{} & \centering 20.0 &  2.85 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 5 & \centering 6.0 & \centering 1.22 \euro{} & \centering 20.0 &  7.34 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 6 & \centering 3.0 & \centering 0.1 \euro{} & \centering 20.0 &  0.3 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 7 & \centering 7.0 & \centering 3.08 \euro{} & \centering 10.0 &  21.58 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 8 & \centering 6.0 & \centering 0.12 \euro{} & \centering 20.0 &  0.74 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 9 & \centering 1.0 & \centering 4.45 \euro{} & \centering 10.0 &  4.45 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 10 & \centering 7.0 & \centering 2.98 \euro{} & \centering 10.0 &  20.83 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 11 & \centering 9.0 & \centering 1.21 \euro{} & \centering 20.0 &  10.91 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 12 & \centering 10.0 & \centering 2.62 \euro{} & \centering 20.0 &  26.16 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 13 & \centering 1.0 & \centering 3.1 \euro{} & \centering 20.0 &  3.1 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 14 & \centering 5.0 & \centering 3.95 \euro{} & \centering 10.0 &  19.73 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 15 & \centering 8.0 & \centering 6.19 \euro{} & \centering 10.0 &  49.51 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 16 & \centering 5.0 & \centering 5.38 \euro{} & \centering 20.0 &  26.9 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+
+                  \end{tabularx}
+        % End page with prestations only
+                              % last page
+                                    % Last page that contains some prestations
+                  \begin{tabularx}{\linewidth}{c X X X c c}
+                      & & & &\\[0.25ex]
+\centering{\bf Détail} & \centering{\bf Quantité} & \centering{\bf Prix unit. (HT)} & \centering{ \bf TVA } & \bf TOTAL (HT)\\[2.5ex]%\hline
+& & & &\\
+ prestation 17 & \centering 1.0 & \centering 3.12 \euro{} & \centering 10.0 &  3.12 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 18 & \centering 1.0 & \centering 0.97 \euro{} & \centering 20.0 &  0.97 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 19 & \centering 3.0 & \centering 1.87 \euro{} & \centering 20.0 &  5.61 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 20 & \centering 6.0 & \centering 7.32 \euro{} & \centering 10.0 &  43.93 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 21 & \centering 2.0 & \centering 2.15 \euro{} & \centering 20.0 &  4.3 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 22 & \centering 8.0 & \centering 5.07 \euro{} & \centering 10.0 &  40.54 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 23 & \centering 2.0 & \centering 4.74 \euro{} & \centering 10.0 &  9.48 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+ prestation 24 & \centering 8.0 & \centering 4.66 \euro{} & \centering 20.0 &  37.3 \euro{} \\[2.5ex]\arrayrulecolor{lightgray}
+                      \hline
+&     &       &       &\\
+&     &       &  TOTAL (HT) & 376.58 \euro{} \\[2.5ex]\hhline{~~~--}
+&     &       &       & \\
+&     &       & TVA (10.0\%) & 24.63 \euro{}\\[2.5ex]\hhline{~~~--}
+&     &       &       & \\
+&     &       & TVA (20.0\%) & 26.06 \euro{}\\[2.5ex]\hhline{~~~--}
+&     &       &       & \\
+&     &       & \bf TOTAL TTC &  \bf 427.26 \euro{} \\[2.5ex]                  \end{tabularx}
+                % End last page with prestation
+                          % end lastpage
+                % End multiple page
+
+\vspace{-100 pt}
+      \fboxrule=1pt
+\fboxsep=10pt
+\begin{minipage}{0.5\linewidth}
+  \centering Pour payer par virement bancaire, merci d'utiliser les coordonnées bancaire suivantes:\\
+  \vspace*{10 pt}
+  \fbox{
+    \begin{minipage}{\linewidth}
+    \centering
+          my awesome company
+        \justify
+    IBAN: \textbf{FR 00000 0000 0000}\\
+    BIC: \textbf{FR XXX}
+    \end{minipage}
+  }
+\end{minipage}  
+\vspace{1 cm}
+\vspace*{\fill}
+  \begin{center}
+    \footnotesize{My Awesome Company, SIRET: 0000000000}\\
+    \footnotesize{}\\
+    \footnotesize{Numéro de TVA Intracommunautaire: FRXXXXXXXXX}\\
+    \footnotesize{
+          }\\
+    \footnotesize{La facture est payable sous 30 jours.}\\
+    \footnotesize{Tout réglement effectué après expiration du délai donnera lieu, à titre de pénalité de retart, à l'application
+    d'un intérêt égal à celui pratiqué par la Banque Centrale Européene à son opération de refinancement la plus récente,
+    majoré de 10 points de pourcentage, ainsi qu'à une indemnité forfaitaire pour frais de recouvrement d'un montant de 40 Euros.}\\
+    \footnotesize{Les pénalités de retard sont exigibles sans qu'un rappel soit nécessaire.}
+  \end{center}
+
+\end{document}

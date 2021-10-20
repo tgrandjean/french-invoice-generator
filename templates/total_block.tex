@@ -1,0 +1,9 @@
+\hline
+&     &       &       &\\
+&     &       &  TOTAL (HT) & \VAR{invoice.total_without_charge | round(2)} \euro{} \\[2.5ex]\hhline{~~~--}
+&     &       &       & \\
+\BLOCK{for vat, total in invoice.total_by_vat.items()}
+&     &       & TVA (\VAR{vat}\%) & \VAR{total | round(2)} \euro{}\\[2.5ex]\hhline{~~~--}
+&     &       &       & \\
+\BLOCK{endfor}
+&     &       & \bf TOTAL TTC &  \bf \VAR{invoice.total | round(2)} \euro{} \\[2.5ex]

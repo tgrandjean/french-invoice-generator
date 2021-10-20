@@ -1,0 +1,52 @@
+\BLOCK{extends 'base.tex'}
+
+\BLOCK{block table_of_fees}
+\BLOCK{if invoice.paginated_prestations | length == 1}
+% Unique page
+      \BLOCK{for page in invoice.paginated_prestations}
+        \begin{tabularx}{\linewidth}{c X X X \BLOCK{if invoice.total_by_vat.keys() | length > 1} X \BLOCK{endif} c}
+            \BLOCK{include 'prestations_block.tex'}
+            \BLOCK{include 'total_block.tex'}
+        \end{tabularx}
+      \BLOCK{endfor}
+% End unique page
+\BLOCK{else}
+% Multiple page
+      \BLOCK{for page in invoice.paginated_prestations}
+        \BLOCK{if loop.last}
+        % last page
+                  \BLOCK{if page | length > 0}
+                  % Last page that contains some prestations
+                  \begin{tabularx}{\linewidth}{c X X X c c}
+                      \BLOCK{include 'prestations_block.tex'}
+                      \BLOCK{include 'total_block.tex'}
+                  \end{tabularx}
+                % End last page with prestation
+                \BLOCK{else}
+                % Last page contains only the total
+                  \begin{tabularx}{\linewidth}{c X X X c c}
+                      \BLOCK{include 'total_block.tex'}
+
+                  \end{tabularx}
+                % End lastpage without prestation
+                \BLOCK{endif}
+          % end lastpage
+          \BLOCK{else}
+          % Page that contains only prestations
+                  \begin{tabularx}{\linewidth}{c X X X c c}
+                      \BLOCK{include 'prestations_block.tex'}
+
+                  \end{tabularx}
+        % End page with prestations only
+        \BLOCK{endif}
+      \BLOCK{endfor}
+% End multiple page
+\BLOCK{endif}
+\BLOCK{endblock}
+
+\BLOCK{block payment}
+\vspace{-100 pt}
+  \BLOCK{if invoice.issuer.rib}
+    \BLOCK{include "payment.tex"}
+  \BLOCK{endif}
+\BLOCK{endblock}
