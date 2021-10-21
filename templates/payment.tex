@@ -1,19 +1,19 @@
 \fboxrule=1pt
 \fboxsep=10pt
 \begin{minipage}{0.5\linewidth}
-  \centering Pour payer par virement bancaire, merci d'utiliser les coordonnées bancaire suivantes:\\
-  \vspace*{10 pt}
-  \fbox{
-    \begin{minipage}{\linewidth}
-    \centering
-    \BLOCK{if invoice.issuer.rib.name}
-      \VAR{invoice.issuer.rib.name}
-    \BLOCK{else}
-      \textbf{\VAR{invoice.issuer.last_name | upper} \VAR{invoice.issuer.first_name | capitalize}} \\
-    \BLOCK{endif}
-    \justify
-    IBAN: \textbf{\VAR{invoice.issuer.rib.iban}}\\
-    BIC: \textbf{\VAR{invoice.issuer.rib.bic}}
-    \end{minipage}
-  }
+	\centering Pour payer par virement bancaire, merci d'utiliser les coordonnées bancaire suivantes:\\
+	\vspace*{10 pt}
+	\fbox{
+		\begin{minipage}{\linewidth}
+			\centering
+			\BLOCK{if invoice.issuer.rib.name}
+			\VAR{invoice.issuer.rib.name}
+			\BLOCK{else}
+			\textbf{\VAR{invoice.issuer.last_name | upper} \VAR{invoice.issuer.first_name | capitalize}} \\
+			\BLOCK{endif}
+			\justify
+			IBAN: \textbf{\VAR{invoice.issuer.rib.iban}}\\
+			BIC: \textbf{\VAR{invoice.issuer.rib.bic}}
+		\end{minipage}
+	}
 \end{minipage}
