@@ -3,7 +3,7 @@ Invoice Generator
 =================
 
 
-.. image:: https://img.shields.io/pypi/v/fench-invoice-generator.svg
+.. image:: https://img.shields.io/pypi/v/french-invoice-generator.svg
         :target: https://pypi.python.org/pypi/french-invoice-generator
 
 .. image:: https://img.shields.io/travis/tgrandjean/invoice-generator.svg
