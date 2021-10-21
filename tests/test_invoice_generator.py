@@ -68,14 +68,14 @@ def project_path():
 
 @pytest.fixture
 def template_dir(project_path):
-    return project_path  / 'templates'
+    return project_path / 'templates'
 
 
 @pytest.fixture
 def generator(invoice, template_dir, tmpdir):
-    return invoice_generator.InvoiceGenerator(template_dir,
+    return invoice_generator.InvoiceGenerator(invoice,
+                                              template_dir,
                                               'main.tex',
-                                              invoice,
                                               tmpdir,
                                               'test')
 
@@ -128,15 +128,25 @@ def test_invoice_generator_template_dir_conversion(generator, template_dir):
     assert generator.template_dir == template_dir
 
 
+def test_invoice_generator_template_dir_setter(generator, template_dir):
+    generator.template_dir = None
+    assert generator.template_dir == template_dir
+
+
 def test_invoice_generator_template_name_accessor(generator):
     assert generator.template_name == 'main.tex'
+
+
+def test_invoice_generator_template_name_setter(generator):
+    generator.template_name = None
+    assert generator.template_name == "main.tex"
 
 
 def test_invoice_generator_invoice_name_accessor(generator):
     assert generator.invoice_name == 'test'
 
 
-def test_invoice_generator_template_name_setter(generator):
+def test_invoice_generator_invoice_name_setter(generator):
     generator.invoice_name = 'test.pdf'
     assert generator.invoice_name == 'test'
 
@@ -150,8 +160,14 @@ def test_invoice_generator_output_directory_setter(generator, template_dir):
     assert generator.output_directory == template_dir
 
 
-def test_invoice_generator_file_to_compile_accessor(generator, template_dir):
-    assert generator._file_to_compile == template_dir / 'test'
+def test_invoice_generator_output_directory_setter_str(generator,
+                                                       template_dir):
+    generator.output_directory = str(template_dir)
+    assert generator.output_directory == template_dir
+
+
+def test_invoice_generator_file_to_compile_accessor(generator, tmpdir):
+    assert generator._file_to_compile == tmpdir / 'test'
 
 
 def test_invoice_generator_load_template(generator):
@@ -165,7 +181,14 @@ def test_invoice_generator_run(generator, tmpdir):
 
 
 def test_invoice_generator_clean(generator, tmpdir):
+    generator._load_template()
+    generator._generate_tex()
     generator._compile_latex()._compile_latex()
-    assert len(os.listdir(tmpdir)) == 5
+    assert len(os.listdir(tmpdir)) == 6
     generator._clean()
     assert len(os.listdir(tmpdir)) == 1
+
+
+def test_invoice_generator_compilation_failed(generator):
+    with pytest.raises(ValueError):
+        generator._compile_latex()

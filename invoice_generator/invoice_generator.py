@@ -44,9 +44,9 @@ class InvoiceGenerator:
     """
 
     def __init__(self,
-                 template_dir,
-                 template_name,
                  data,
+                 template_dir=None,
+                 template_name=None,
                  output_directory=None,
                  invoice_name=None):
         self.template_dir = template_dir
@@ -61,6 +61,8 @@ class InvoiceGenerator:
 
     @template_dir.setter
     def template_dir(self, template_dir):
+        if not template_dir:
+            template_dir = Path(__file__).resolve().parents[1] / 'templates'
         if not os.path.exists(template_dir):
             msg = f"The directory {template_dir} doens't exists."
             raise FileNotFoundError(msg)
@@ -86,6 +88,8 @@ class InvoiceGenerator:
 
     @template_name.setter
     def template_name(self, template_name):
+        if not template_name:
+            template_name = "main.tex"
         self._template_name = template_name
 
     @property
@@ -111,7 +115,7 @@ class InvoiceGenerator:
 
     @property
     def _file_to_compile(self):
-        return self.template_dir / (self.invoice_name)
+        return self.output_directory / (self.invoice_name)
 
     @property
     def _latex_jinja_env(self):
@@ -182,7 +186,6 @@ class InvoiceGenerator:
 
     def _check_compilation_success(self):
         if not re.search('Output written on', self.__stdout.decode()):
-            print(self.__stdout.decode())
             raise ValueError('Compilation failed')
 
     def _clean(self):
