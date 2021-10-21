@@ -10,7 +10,9 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = ['Click>=7.0', ]
+requirements = ["pydantic==1.8.2",
+                "Jinja2=3.0.2",
+                "email-validator==1.1.3"]
 
 test_requirements = ['pytest>=3', ]
 
