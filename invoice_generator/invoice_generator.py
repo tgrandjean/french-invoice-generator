@@ -62,7 +62,7 @@ class InvoiceGenerator:
     @template_dir.setter
     def template_dir(self, template_dir):
         if not template_dir:
-            template_dir = Path(__file__).resolve().parents[1] / 'templates'
+            template_dir = Path(__file__).resolve().parents[0] / 'templates'
         if not os.path.exists(template_dir):
             msg = f"The directory {template_dir} doens't exists."
             raise FileNotFoundError(msg)

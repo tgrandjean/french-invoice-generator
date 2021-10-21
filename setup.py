@@ -42,4 +42,5 @@ setup(
     url='https://github.com/tgrandjean/french-invoice-generator',
     version='0.1.0',
     zip_safe=False,
+    package_data={'': ['templates/*']}
 )

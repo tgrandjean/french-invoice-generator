@@ -3,13 +3,13 @@ Invoice Generator
 =================
 
 
-.. image:: https://img.shields.io/pypi/v/invoice_generator.svg
-        :target: https://pypi.python.org/pypi/invoice_generator
+.. image:: https://img.shields.io/pypi/v/fench-invoice-generator.svg
+        :target: https://pypi.python.org/pypi/french-invoice-generator
 
-.. image:: https://img.shields.io/travis/tgrandjean/invoice_generator.svg
-        :target: https://travis-ci.com/tgrandjean/invoice_generator
+.. image:: https://img.shields.io/travis/tgrandjean/french-invoice-generator.svg
+        :target: https://travis-ci.com/tgrandjean/french-invoice-generator
 
-.. image:: https://readthedocs.org/projects/invoice-generator/badge/?version=latest
+.. image:: https://readthedocs.org/projects/french-invoice-generator/badge/?version=latest
         :target: https://invoice-generator.readthedocs.io/en/latest/?version=latest
         :alt: Documentation Status
 
