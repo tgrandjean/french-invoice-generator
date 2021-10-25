@@ -6,8 +6,8 @@ Invoice Generator
 .. image:: https://img.shields.io/pypi/v/french-invoice-generator.svg
         :target: https://pypi.python.org/pypi/french-invoice-generator
 
-.. image:: https://img.shields.io/travis/tgrandjean/invoice-generator.svg
-        :target: https://app.travis-ci.com/github/tgrandjean/invoice-generator
+.. image:: https://img.shields.io/travis/tgrandjean/french-invoice-generator.svg
+        :target: https://app.travis-ci.com/github/tgrandjean/french-invoice-generator
 
 .. image:: https://readthedocs.org/projects/french-invoice-generator/badge/?version=latest
         :target: https://invoice-generator.readthedocs.io/en/latest/?version=latest
