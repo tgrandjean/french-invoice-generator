@@ -53,9 +53,11 @@ class Issuer(BaseModel):
     logo: Optional[str]
     rib: Optional[RIB]
     email: EmailStr
+    phone: Optional[str]
 
 
 class Invoice(BaseModel):
+    title: str = 'Facture'
     reference: str
     emited:  date
     issuer: Issuer
@@ -64,6 +66,8 @@ class Invoice(BaseModel):
     total_without_charge: float = None
     total_vat: float = None
     total: float = None
+    payment_within: int = 30
+    late_payment_message: Optional[str]
 
     @validator('total_without_charge', always=True, pre=True)
     def compute_total_without_charge(cls, v, values):
