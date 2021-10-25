@@ -99,8 +99,8 @@ class Invoice(BaseModel):
             return [self.prestations[:16], self.prestations[16:]]
         else:
             pages = []
-            pages.append(self.prestations[:12])  # first page
-            values = self.prestations[12:]
+            pages.append(self.prestations[:16])  # first page
+            values = self.prestations[16:]
             num_pages = len(values) // 20
             for i in range(num_pages):
                 pages.append(values[i * 20: (i + 1) * 20])
