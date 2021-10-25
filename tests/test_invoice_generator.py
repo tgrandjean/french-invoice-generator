@@ -109,9 +109,9 @@ def test_invoice_pagination(invoice):
     assert len(invoice.paginated_prestations[0]) == 16
     invoice.prestations = invoice.prestations * 2
     assert len(invoice.paginated_prestations) == 3
-    assert len(invoice.paginated_prestations[0]) == 12
+    assert len(invoice.paginated_prestations[0]) == 16
     assert len(invoice.paginated_prestations[1]) == 20
-    assert len(invoice.paginated_prestations[2]) == 12
+    assert len(invoice.paginated_prestations[2]) == 8
 
 
 def test_invoice_generator_template_dir_accessor(generator, template_dir):
